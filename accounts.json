@@ -1,0 +1,129 @@
+{
+  "accounts": [
+    {
+      "handle": "trq212",
+      "name": "Thariq Shihipar",
+      "role": "Engineer, Claude Code",
+      "tier": 1,
+      "source": "twitter"
+    },
+    {
+      "handle": "bcherny",
+      "name": "Boris Cherny",
+      "role": "Head of Claude Code",
+      "tier": 1,
+      "source": "twitter"
+    },
+    {
+      "handle": "_catwu",
+      "name": "Cat Wu",
+      "role": "Head of Product, Claude Code",
+      "tier": 1,
+      "source": "twitter"
+    },
+    {
+      "handle": "dmwlff",
+      "name": "Adam Wolff",
+      "role": "Engineer, Claude Code (prev Robinhood, Facebook)",
+      "tier": 1,
+      "source": "twitter"
+    },
+    {
+      "handle": "nsthorat",
+      "name": "Nikhil Thorat",
+      "role": "Research Tools (prev Google Brain, Lilac AI)",
+      "tier": 1,
+      "source": "twitter"
+    },
+    {
+      "handle": "alexalbert__",
+      "name": "Alex Albert",
+      "role": "Head of Developer Relations",
+      "tier": 2,
+      "source": "twitter"
+    },
+    {
+      "handle": "AmandaAskell",
+      "name": "Amanda Askell",
+      "role": "Philosopher, Claude character & alignment",
+      "tier": 2,
+      "source": "twitter"
+    },
+    {
+      "handle": "DarioAmodei",
+      "name": "Dario Amodei",
+      "role": "CEO",
+      "tier": 3,
+      "source": "twitter"
+    },
+    {
+      "handle": "mikeyk",
+      "name": "Mike Krieger",
+      "role": "CPO (co-founder Instagram)",
+      "tier": 3,
+      "source": "twitter"
+    },
+    {
+      "handle": "jackclarkSF",
+      "name": "Jack Clark",
+      "role": "Co-founder, AI policy",
+      "tier": 3,
+      "source": "twitter"
+    },
+    {
+      "handle": "daniela_amodei",
+      "name": "Daniela Amodei",
+      "role": "President",
+      "tier": 3,
+      "source": "twitter"
+    },
+    {
+      "handle": "ch402",
+      "name": "Chris Olah",
+      "role": "Co-founder, interpretability research",
+      "tier": 4,
+      "source": "twitter"
+    },
+    {
+      "handle": "charmaine_klee",
+      "name": "Charmaine Klee",
+      "role": "Dev tools engineer (prev Val Town)",
+      "tier": 5,
+      "source": "twitter"
+    },
+    {
+      "handle": "AnthropicAI",
+      "name": "Anthropic",
+      "role": "Official company account",
+      "tier": 6,
+      "source": "discord"
+    },
+    {
+      "handle": "claudeai",
+      "name": "Claude",
+      "role": "Official product account",
+      "tier": 6,
+      "source": "discord"
+    }
+  ],
+  "discord": {
+    "server_id": "1072196207201501266",
+    "channels": [
+      {
+        "id": "1072197729276657744",
+        "name": "announcements",
+        "description": "Official product announcements and feature launches"
+      },
+      {
+        "id": "1226774707865653288",
+        "name": "events",
+        "description": "Meetups, conferences, office hours"
+      },
+      {
+        "id": "1213965282406830120",
+        "name": "updates",
+        "description": "Links to AnthropicAI tweets and updates"
+      }
+    ]
+  }
+}
