@@ -11,7 +11,7 @@ import re
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 md_path = sys.argv[1] if len(sys.argv) > 1 else "output/2026-03-22.md"
-output_path = sys.argv[2] if len(sys.argv) > 2 else os.path.expanduser("~/Downloads/catchup-with-claude.docx")
+output_path = sys.argv[2] if len(sys.argv) > 2 else os.path.expanduser("~/Desktop/Catchup with Claude/catchup-with-claude.docx")
 LOGO_PATH = os.path.join(SCRIPT_DIR, "assets", "claude-logo.jpg")
 
 # Read the markdown

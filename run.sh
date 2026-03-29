@@ -15,7 +15,9 @@ else
 fi
 UNTIL=$(date +%Y-%m-%d)
 DATA_DIR="$SCRIPT_DIR/data/$UNTIL"
-OUTPUT_FILE="$SCRIPT_DIR/output/${UNTIL}.md"
+OUTPUT_DIR="$HOME/Desktop/Catchup with Claude"
+mkdir -p "$OUTPUT_DIR"
+OUTPUT_FILE="$OUTPUT_DIR/${UNTIL}.md"
 
 echo "=========================================="
 echo "  Anthropic Weekly Newsletter Generator"
@@ -99,12 +101,13 @@ INPUTEOF
 # Use Claude CLI to generate the newsletter
 cat "$DATA_DIR/_claude_input.md" | claude --print > "$OUTPUT_FILE" 2>/dev/null
 
+# Generate .docx
+DOCX_FILE="$OUTPUT_DIR/catchup-with-claude-${UNTIL}.docx"
+python3 "$SCRIPT_DIR/generate-docx.py" "$OUTPUT_FILE" "$DOCX_FILE"
+
 echo ""
 echo "=========================================="
 echo "  Newsletter generated!"
-echo "  Output: $OUTPUT_FILE"
+echo "  Markdown: $OUTPUT_FILE"
+echo "  Docx:     $DOCX_FILE"
 echo "=========================================="
-echo ""
-echo "Next steps:"
-echo "  1. Review: cat $OUTPUT_FILE"
-echo "  2. Copy into Google Docs"
