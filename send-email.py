@@ -42,12 +42,7 @@ def send(docx_path, md_path=None):
     msg["To"] = TO_EMAIL
     msg["Subject"] = f"Catchup with Claude — {today}"
 
-    # Body: include the markdown content if available
-    body = f"Your weekly Catchup with Claude newsletter is attached.\n\n"
-    if md_path and os.path.exists(md_path):
-        with open(md_path) as f:
-            body += f.read()
-    msg.attach(MIMEText(body, "plain"))
+    msg.attach(MIMEText("Your weekly Catchup with Claude newsletter is attached.", "plain"))
 
     # Attach .docx
     with open(docx_path, "rb") as f:
