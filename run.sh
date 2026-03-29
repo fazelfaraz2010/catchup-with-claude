@@ -105,6 +105,12 @@ cat "$DATA_DIR/_claude_input.md" | claude --print > "$OUTPUT_FILE" 2>/dev/null
 DOCX_FILE="$OUTPUT_DIR/catchup-with-claude-${UNTIL}.docx"
 python3 "$SCRIPT_DIR/generate-docx.py" "$OUTPUT_FILE" "$DOCX_FILE"
 
+# Email if --email flag passed
+if [[ "${2:-}" == "--email" ]]; then
+  echo "[5/5] Emailing newsletter..."
+  python3 "$SCRIPT_DIR/send-email.py" "$DOCX_FILE" "$OUTPUT_FILE"
+fi
+
 echo ""
 echo "=========================================="
 echo "  Newsletter generated!"
