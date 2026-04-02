@@ -28,15 +28,20 @@ Next item body text...
 
 Use "---" between sections.
 
-## Important: Use the linked articles
+## Important: Use the linked articles and include citation links
 
-Many tweets contain links to blog posts, documentation pages, articles, and videos. The data includes resolved URLs and page titles in "resolved_links" fields. USE THESE. Reference the actual article or blog post by name. Instead of "the team shared a thread about skills," write "the team published 'Skills are the abstraction that all agents will build on' — and it's worth bookmarking." This makes the newsletter much richer and more useful.
+Many tweets contain links to blog posts, documentation pages, articles, and videos. The data includes resolved URLs and page titles in "resolved_links" fields. USE THESE. Reference the actual article or blog post by name. Instead of "the team shared a thread about skills," write "the team published 'Skills are the abstraction that all agents will build on' — and it's worth bookmarking."
+
+For EVERY item that has a source link, include it as a markdown link at the end of the body text so readers can learn more. Format: [Read more](https://actual-url.com) or [Full post](https://actual-url.com). If there are multiple relevant links for one item, include them all. Example:
+
+Item Title
+2-4 sentences explaining what it is and why it matters. This is the one exception to the "no markdown" rule — use [Link Text](URL) format for citation links so they become clickable in the final document. [Read more](https://example.com/article)
 
 ## Rules
 - Max 3 pages in Google Docs (roughly 1200-1400 words max)
 - Non-technical audience. Clear, accessible language.
 - No emojis.
-- No markdown formatting (no asterisks, no #, no bullet markers). Just clean text with clear item titles on their own lines.
+- No markdown formatting (no asterisks, no #, no bullet markers) EXCEPT for citation links — use [Link Text](URL) format for source links. Just clean text with clear item titles on their own lines.
 
 ## Structure
 

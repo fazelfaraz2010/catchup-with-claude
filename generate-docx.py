@@ -5,6 +5,7 @@ from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 import sys
 import os
 import re
@@ -44,6 +45,56 @@ for section in doc.sections:
     section.bottom_margin = Inches(0.6)
     section.left_margin = Inches(0.75)
     section.right_margin = Inches(0.75)
+
+def add_hyperlink(paragraph, text, url, font_size=Pt(10.5), color=RGBColor(0x1a, 0x6b, 0xb5)):
+    """Add a clickable hyperlink to a paragraph."""
+    part = paragraph.part
+    r_id = part.relate_to(url, 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink', is_external=True)
+    hyperlink = OxmlElement('w:hyperlink')
+    hyperlink.set(qn('r:id'), r_id)
+    new_run = OxmlElement('w:r')
+    rPr = OxmlElement('w:rPr')
+    rStyle = OxmlElement('w:rStyle')
+    rStyle.set(qn('w:val'), 'Hyperlink')
+    rPr.append(rStyle)
+    c = OxmlElement('w:color')
+    c.set(qn('w:val'), str(color).replace('#', ''))
+    rPr.append(c)
+    sz = OxmlElement('w:sz')
+    sz.set(qn('w:val'), str(int(font_size.pt * 2)))
+    rPr.append(sz)
+    u = OxmlElement('w:u')
+    u.set(qn('w:val'), 'single')
+    rPr.append(u)
+    rFonts = OxmlElement('w:rFonts')
+    rFonts.set(qn('w:ascii'), 'Arial')
+    rFonts.set(qn('w:hAnsi'), 'Arial')
+    rPr.append(rFonts)
+    new_run.append(rPr)
+    new_run.text = text
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+
+def add_text_with_links(paragraph, text, font_size=Pt(10.5), font_color=RGBColor(0x33, 0x33, 0x33)):
+    """Parse text for markdown links [text](url) and render as mixed runs + hyperlinks."""
+    link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
+    last_end = 0
+    for match in link_pattern.finditer(text):
+        # Add plain text before the link
+        before = text[last_end:match.start()]
+        if before:
+            run = paragraph.add_run(before)
+            run.font.size = font_size
+            run.font.color.rgb = font_color
+        # Add the hyperlink
+        add_hyperlink(paragraph, match.group(1), match.group(2), font_size=font_size)
+        last_end = match.end()
+    # Add remaining plain text
+    remaining = text[last_end:]
+    if remaining:
+        run = paragraph.add_run(remaining)
+        run.font.size = font_size
+        run.font.color.rgb = font_color
 
 def add_hr(doc):
     p = doc.add_paragraph()
@@ -156,16 +207,12 @@ def flush_paragraph(doc, text, is_quick_link=False):
         p = doc.add_paragraph(style='List Bullet')
         p.paragraph_format.space_before = Pt(2)
         p.paragraph_format.space_after = Pt(2)
-        run = p.add_run(text)
-        run.font.size = Pt(10)
-        run.font.color.rgb = RGBColor(0x44, 0x44, 0x44)
+        add_text_with_links(p, text, font_size=Pt(10), font_color=RGBColor(0x44, 0x44, 0x44))
     else:
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(0)
         p.paragraph_format.space_after = Pt(8)
-        run = p.add_run(text)
-        run.font.size = Pt(10.5)
-        run.font.color.rgb = RGBColor(0x33, 0x33, 0x33)
+        add_text_with_links(p, text, font_size=Pt(10.5), font_color=RGBColor(0x33, 0x33, 0x33))
 
 # Skip header lines we already processed
 skip_until_content = True
