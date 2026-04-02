@@ -32,7 +32,7 @@ Use "---" between sections.
 
 Many tweets contain links to blog posts, documentation pages, articles, and videos. The data includes resolved URLs and page titles in "resolved_links" fields. USE THESE. Reference the actual article or blog post by name. Instead of "the team shared a thread about skills," write "the team published 'Skills are the abstraction that all agents will build on' — and it's worth bookmarking."
 
-For EVERY item that has a source link, include it as a markdown link at the end of the body text so readers can learn more. Format: [Read more](https://actual-url.com) or [Full post](https://actual-url.com). If there are multiple relevant links for one item, include them all. Example:
+Include 1-2 citation links per SECTION (not per item) — only for the most important or useful sources in that group. Use markdown link format at the end of the relevant item's body text: [Read more](https://actual-url.com). Don't overdo it — if a section has 4 items, maybe 1 or 2 get a link. Pick the ones readers would actually click. Example:
 
 Item Title
 2-4 sentences explaining what it is and why it matters. This is the one exception to the "no markdown" rule — use [Link Text](URL) format for citation links so they become clickable in the final document. [Read more](https://example.com/article)
